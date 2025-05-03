@@ -3,7 +3,7 @@ import pygame
 
 class GameBoard(): 
     def __init__(self):
-        self.num_of_tiles = 40
+        self.num_of_tiles = 400
         self.tile_size = math.floor(800/self.num_of_tiles)
         self.board_height = self.num_of_tiles * self.tile_size
         self.board_width = self.board_height
@@ -26,8 +26,8 @@ class GameBoard():
         self.tiles[row][col] = 0
     
     def draw_tiles(self):
-        for col in range(self.num_of_tiles):
-            for row in range(self.num_of_tiles):
+        for row in range(self.num_of_tiles):
+            for col in range(self.num_of_tiles):
                 if self.tiles[row][col] == 1:
                     pygame.draw.rect(self.window, (255, 255, 255),
                                      (col * self.tile_size, row * self.tile_size, self.tile_size, self.tile_size))
@@ -41,8 +41,8 @@ class GameBoard():
     def update_tiles(self):
         # the heart of the algorithm
         new_tiles = [[0] * self.num_of_tiles for _ in range(self.num_of_tiles)]
-        for col in range(self.num_of_tiles):
-            for row in range(self.num_of_tiles): # need to fix this heathens code
+        for row in range(self.num_of_tiles):
+            for col in range(self.num_of_tiles): # need to fix this heathens code
                 count = 0
                 for i, j in [(-1, -1), (-1, 0), (-1, 1), (0, -1),(0,1), (1, -1), (1, 0), (1,1)]:
                     new_row = row + i

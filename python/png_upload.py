@@ -2,8 +2,9 @@ import numpy
 from PIL import Image
 import pygame
 from game_board import GameBoard
+import argparse
 
-def view_img():
+def view_img(image=""):
     pygame.init()
 
     game_board = GameBoard()
@@ -12,7 +13,7 @@ def view_img():
     clock = pygame.time.Clock()
     pause = True
 
-    image = Image.open('img/1.png')
+    image = Image.open('img/' + image + ".png")
 
     new_size = 400
     resized_image = image.resize((new_size, new_size))
@@ -57,6 +58,10 @@ def view_img():
     pygame.quit()
 
 if __name__ == "__main__":
-    view_img()
+    parser = argparse.ArgumentParser("images")
+    parser.add_argument("image", help="which image to pick from the directory")
+    args = parser.parse_args()
+    view_img(args.image)
+
 
 
