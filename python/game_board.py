@@ -3,7 +3,7 @@ import pygame
 
 class GameBoard(): 
     def __init__(self):
-        self.num_of_tiles = 400
+        self.num_of_tiles = 40
         self.tile_size = math.floor(800/self.num_of_tiles)
         self.board_height = self.num_of_tiles * self.tile_size
         self.board_width = self.board_height
