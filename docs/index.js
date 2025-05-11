@@ -17,7 +17,16 @@ function buildGrid() {
 }
 
 let grid = buildGrid();
+// interval like we did in snakes
+// not like we did in tetris, with manual delta times.
+const interval = 100;
 
+setInterval(() => {
+  grid = nextGen(grid);
+  render(grid);
+}, interval);
+
+/* old, super fast way of updating canvas.
 requestAnimationFrame(update);
 
 function update() {
@@ -25,7 +34,7 @@ function update() {
   render(grid);
   requestAnimationFrame(update);
 }
-
+*/
 
 function nextGen(grid) {
   const nextGen = grid.map(arr => [...arr]);
@@ -36,15 +45,14 @@ function nextGen(grid) {
       // calculate the number of neighbours for each cell
       for (let i = -1; i < 2; i++) {
         for (let j = -1; j < 2; j++) {
-          if (i === 0 && j === 0) continue;
-          const x_cell = row + i;
-          const y_cell = col + i;
-          if (x_cell >= 0 && y_cell >= 0 && x_cell < ROWS && y_cell < COLS) {
-            const currentNeighbour = grid[row + i][col + j];
-            numNeighbours += currentNeighbour;
+          if (i === 0 && j === 0) continue; // this line is critical, you must
+          // not count yourself as a neighbour!
+          const x_cell = (ROWS + row + i) % ROWS;
+          const y_cell = (COLS + col + j) % COLS;
+          const currentNeighbour = grid[x_cell][y_cell];
+          numNeighbours += currentNeighbour;
           }
         }
-      }
 
       // apply rules based on numNeighbours for each cell
       if (cell === ALIVE && numNeighbours < 2) {
