@@ -1,0 +1,27 @@
+body {
+  flex-direction: row;
+  height: 100vh;
+  display: flex;
+}
+
+button {
+  width: 100%;
+  height: 100%;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+a {
+  flex: 1;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: grey;
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+}
