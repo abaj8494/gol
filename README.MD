@@ -1,5 +1,8 @@
 # Game of Life
 
+https://abaj8494.github.io/gol/
+
+
 There is a Python pygame implementation here. I also intend to port this to Javascript using p5.js and deploy it on the github-pages branch as a release.
 
 # Update:
@@ -16,4 +19,4 @@ The corresponding github-page served from `src` is built in javascript using the
 
 ## todo
 
-- [ ] [heatmap](https://www.youtube.com/watch?v=7ovnav292dY)
+- [X] [heatmap](https://www.youtube.com/watch?v=7ovnav292dY)
